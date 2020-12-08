@@ -1,5 +1,7 @@
 class Cocktails
 
+    attr_accessor :name, :ingredients, :recipe, :description
+
     @@all = []
 
    def initialize(cocktails_hash)

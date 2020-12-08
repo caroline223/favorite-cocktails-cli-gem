@@ -2,18 +2,14 @@ class FavoriteCocktails::CLI
 
     BASE_URL = 'https://makemeacocktail.com/'
 
-    def start
+    def start 
         puts "------------------------"
-        puts "------------------------"
-        puts "   Famous Cocktails     "
-        puts "  Care to take a sip??  "
-        puts "------------------------"
+        puts "   Famous Cocktails     ".light_green
+        puts "  Care to take a sip??  ".light_blue
         puts "------------------------"
         drinks = create_cocktails
-
+       
         name_cocktails(drinks)
-
-
     end
 
     def create_cocktails
