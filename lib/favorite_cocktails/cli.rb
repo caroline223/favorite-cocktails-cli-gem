@@ -48,9 +48,50 @@ class FavoriteCocktails::CLI
         puts "(3) Recipe"
         puts "(4) Return to the list of all cocktails"
         input = gets.strip
+        subject = nil 
+        info = nil 
+        case = input.downcase
+        when "1", "Description"
+            subject = "Description"
+            info = drinks.description 
+        when "2", "Ingredients"
+            subject = "Ingredients"
+            info = drinks.ingredients  
+        when "3", "Recipe"
+            subject = "Recipe"
+            info = drinks.recipe 
+        when "exit" 
+            exit 
+
+        else
+            puts "Whoa there! That's not a vaild input. Please try again."
+        end
+
+        cocktails_specific_info(drinks, subject, info)
     end
 
-    def cocktails_specific_info(drinks, topic, info)
+    def cocktails_specific_info(drinks, subject, info) #Presents more information to the user
+        puts "------------------------"
+        puts "------------------------"
+        puts "#{drinks.name} ~ #{subject}"
+        puts "------------------------"
+        puts "------------------------"
+
+        puts "(1) Discover more about the #{drinks.name}"
+        puts "(2) Uncover a different cocktail."
+        input = gets.strip
+        case input.downcase
+        when "1"
+            cocktails_more_info(drinks)
+        when "2"
+            start 
+        when "exit"
+            exit
+    
+    else
+        puts "Whoa there! That's not a vaild input. Please try again."
+        cocktails_specific_info(drinks, subject, info)
+    end
     end
 
 
