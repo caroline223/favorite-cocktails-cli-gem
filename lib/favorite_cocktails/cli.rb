@@ -41,7 +41,6 @@ class FavoriteCocktails::CLI
 
 
     def cocktails_more_info(drinks)
-        puts
         puts "FInd out more information about the #{cocktail.name}:"
         puts "(1) Description"
         puts "(2) Ingredients"
