@@ -14,12 +14,15 @@ class Scraper
         drinks = Nokogiri::HTML(open(page_url))
         cocktail_drinks = drinks.css("a")
         cocktail_drinks.each do |cocktails|
-                cocktails.css("h5").text.split          
+                hash = {
+                name: cocktails.css("h5").text.split, 
+                rating: cocktails.css() 
+        }        
         end
         binding.pry
         cocktail_description = description.css()
         
-        Cocktails.new(cocktails)
+        FavoriteCocktails.new(cocktails)
     end
 
 end 
