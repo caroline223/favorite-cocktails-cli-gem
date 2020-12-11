@@ -8,7 +8,8 @@ class FavoriteCocktails::CLI
         puts "  Care to take a sip??  ".light_blue
         puts "------------------------"
         drinks = create_cocktails
-       
+        @c = 0
+        @f = 4
         name_cocktails(drinks)
     end
 
@@ -21,11 +22,15 @@ class FavoriteCocktails::CLI
 
 
     def name_cocktails(drinks)
-        puts
-        puts
-        puts
-        puts
-        puts
+        puts ""
+        drinks[@c..@c+@f].each_with_indnex(@c +1){|a,i| puts "[#{i}] #{a.name}"}
+        puts "[all]" if  @f != 64
+        puts "[previous]" if 
+        puts "[next]" if @c == 0 && @f == 4
+        puts "[previous || next]" if @c + @f >= 64 && @f == 4 
+        puts ""
+        puts "Type [exit] at any time to quit the search."
+        puts ""
         puts "Type in the cocktail drink or number to learn more about the cocktail."
         input = gets.strip
         if input.to_i > 0 && input.to_i <= drinks.length
