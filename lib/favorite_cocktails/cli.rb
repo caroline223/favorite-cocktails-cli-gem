@@ -41,8 +41,6 @@ class FavoriteCocktails::CLI
             @c = 0
             @f = 64
             name_cocktails(drinks)
-        elsif input.downcase == ""
-            
         elsif input.downcase == "previous"
             @c -= 10
             name_cocktails(drinks)
@@ -64,6 +62,14 @@ class FavoriteCocktails::CLI
     end
 
     def drinks_description(drinks)
+        description = FavoriteCocktails::Scraper.scrape_info(BASE_URL + drinks.page_url)
+        puts "------------------------"
+        puts "Description of the #{drinks.name}".light_purple
+        puts "------------------------"
+        puts ""
+        puts "Did you know?"
+        puts "#{drinks.description}"
+        cocktails_more_info(drinks)
     end
 
 
