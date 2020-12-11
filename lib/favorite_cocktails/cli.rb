@@ -25,7 +25,7 @@ class FavoriteCocktails::CLI
         puts ""
         drinks[@c..@c+@f].each_with_indnex(@c +1){|a,i| puts "[#{i}] #{a.name}"}
         puts "[all]" if  @f != 64
-        puts "[previous]" if 
+        puts "[previous]" if @c + @ f >= 64 && @f == 4 
         puts "[next]" if @c == 0 && @f == 4
         puts "[previous || next]" if @c + @f >= 64 && @f == 4 
         puts ""
@@ -47,26 +47,25 @@ class FavoriteCocktails::CLI
 
     end
 
+    def drinks_description(drinks)
+    end
+
 
     def cocktails_more_info(drinks)
         puts "FInd out more information about the #{cocktail.name}:"
-        puts "(1) Description"
-        puts "(2) Ingredients"
-        puts "(3) Recipe"
-        puts "(4) Return to the list of all cocktails"
+        puts "(1) Ingredients"
+        puts "(2) Recipe"
+        puts "(3) Return to the list of all cocktails"
         input = gets.strip
         subject = nil 
         info = nil 
         case = input.downcase
-        when "1", "Description"
-            subject = "Description"
-            info = drinks.description 
-        when "2", "Ingredients"
+        when "1", "Ingredients"
             subject = "Ingredients"
-            info = drinks.ingredients  
-        when "3", "Recipe"
+            info = drinks.ingredients 
+        when "2", "Recipe"
             subject = "Recipe"
-            info = drinks.recipe 
+            info = drinks.recipe  
         when "exit" 
             exit 
 
