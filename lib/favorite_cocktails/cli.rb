@@ -24,12 +24,12 @@ class FavoriteCocktails::CLI
     def name_cocktails(drinks)
         puts ""
         drinks[@c..@c+@f].each_with_indnex(@c +1){|a,i| puts "[#{i}] #{a.name}"}
-        puts "[all]" if  @f != 64
-        puts "[previous]" if @c + @ f >= 64 && @f == 4 
-        puts "[next]" if @c == 0 && @f == 4
-        puts "[previous || next]" if @c + @f >= 64 && @f == 4 
+        puts "(all)" if  @f != 64
+        puts "(previous)" if @c + @ f >= 64 && @f == 4 
+        puts "(next)" if @c == 0 && @f == 4
+        puts "(previous || next)" if @c + @f >= 64 && @f == 4 
         puts ""
-        puts "Type [exit] at any time to quit the search."
+        puts "Type (exit) at any time to quit the search."
         puts ""
         puts "Type in the cocktail drink or number to learn more about the cocktail."
         input = gets.strip
@@ -37,8 +37,24 @@ class FavoriteCocktails::CLI
             cocktails_more_info(FavoriteCocktails::Cocktails.all[input.to_i - 1])
         elsif cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|cocktails| cocktails.name.downcase == input.downcase})
             cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|cocktails| cocktails.name.downcase == input.downcase})
-        elsif input.downcase == "exit"
-            self.exit
+        elsif input.downcase == "all"
+            @c = 0
+            @f = 64
+            name_cocktails(drinks)
+        elsif input.downcase == ""
+            
+        elsif input.downcase == "previous"
+            @c -= 10
+            name_cocktails(drinks)
+        elsif input.downcase == "next"
+            @c += 10
+            name_cocktails(drinks)
+        elsif input.downcase == "previous" && @c == 0
+            puts "That's all of the drinks!"
+            name_cocktails(drinks)
+        elsif input.downcase == "next" && @c+@f == 64
+            puts "You've seen all of the drinks! You must of been really thirsty :)"
+            name_cocktails(drinks)
         else
             puts ""
             puts "Not quite. Please try again."
