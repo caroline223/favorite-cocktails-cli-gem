@@ -32,6 +32,13 @@ class FavoriteCocktails::CLI
             cocktails_more_info(FavoriteCocktails::Cocktails.all[input.to_i - 1])
         elsif cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|cocktails| cocktails.name.downcase == input.downcase})
             cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|cocktails| cocktails.name.downcase == input.downcase})
+        elsif input.downcase == "exit"
+            self.exit
+        else
+            puts ""
+            puts "Not quite. Please try again."
+            self.name_cocktails(drinks)
+        end
 
     end
 
@@ -68,7 +75,7 @@ class FavoriteCocktails::CLI
     def cocktails_specific_info(drinks, subject, info) #Presents more information to the user
         puts "------------------------"
         puts "------------------------"
-        puts "#{drinks.name} ~ #{subject}"
+        puts "#{drinks.name} ~ #{subject}".light_purple
         puts "------------------------"
         puts "------------------------"
 
@@ -92,7 +99,7 @@ class FavoriteCocktails::CLI
 
     def exit #Upon leaving the program, give user a parting message
         puts "Thanks for visiting this page!"
-        puts "Remember, stay quenched my friends."
+        puts "Remember, stay thirsty my friends."
     end
 
 end 
