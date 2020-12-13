@@ -1,4 +1,4 @@
-require_relative 'lib/favorite_cocktails/version'
+require 'lib/favorite_cocktails/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "favorite_cocktails"
