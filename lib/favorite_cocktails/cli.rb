@@ -121,13 +121,14 @@ class FavoriteCocktails::CLI
 
         puts "(1) Discover more about the #{drink.name}"
         puts "(2) Uncover a different cocktail."
+        puts "(3) Return to main menu"
         input = gets.strip
         case input.downcase
             when "1"
                 cocktails_more_info(drinks) 
             when "2"
                 start 
-            when "exit"
+            when "3"
                 exit
     
         else
