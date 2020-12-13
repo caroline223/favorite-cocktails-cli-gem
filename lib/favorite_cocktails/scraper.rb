@@ -7,11 +7,11 @@ require 'pry'
 class FavoriteCocktails::Scraper
 
     def self.scrape_index(url)
-        url = 'https://makemeacocktail.com/recipes/100+Cocktails/'
+        url = 'https://www.webstaurantstore.com/11/bar-drink-mixes.html'
 
         favorite_cocktails = []
         doc = Nokogiri::HTML(open(url))
-        drinks = doc.css()
+        drinks = doc.css(".details a").text.split("plus")
             binding.pry
         drinks.each do |d|
             drink = {}

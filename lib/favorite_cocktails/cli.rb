@@ -1,6 +1,6 @@
 class FavoriteCocktails::CLI
 
-    BASE_URL = 'https://makemeacocktail.com/'
+    BASE_URL = 'https://webstaurantstore.com/'
 
     def start 
         puts "------------------------"
@@ -14,7 +14,7 @@ class FavoriteCocktails::CLI
     end
 
     def create_cocktails
-        cocktails_array = FavoriteCocktails::Scraper.scrape_index(BASE_URL + "recipes/100+Cocktails/")
+        cocktails_array = FavoriteCocktails::Scraper.scrape_index(BASE_URL + "/11/bar-drink-mixes.html")
         cocktails_array.collect do |cocktails|
             FavoriteCocktails::Cocktails.new(cocktails[:name], cocktails[:page_url])
         end
