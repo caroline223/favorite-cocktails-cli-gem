@@ -61,35 +61,46 @@ class FavoriteCocktails::CLI
 
     end
 
-    def drinks_description(drink)
-        description = FavoriteCocktails::Scraper.scrape_info(BASE_URL + drink.page_url)
-        puts "------------------------"
-        puts "Description of the #{drink.name}".light_purple
-        puts "------------------------"
-        puts ""
-        puts "Did you know?"
-        puts "#{drink.image}"
-        puts "#{drink.description}"
-        cocktails_more_info(drink)
-    end
-
-
+    
     def cocktails_more_info(drink)
+        information = FavoriteCocktails::Scraper.scrape_info(BASE_URL + drink.page_url)
+        drink.add_information(information)
         puts "FInd out more information about the #{drink.name}:"
-        puts "(1) Ingredients"
-        puts "(2) Instructions"
-        puts "(3) Return to the list of all cocktails"
+        puts "(1) Description"
+        puts "(2) Ingredients"
+        puts "(3) Instructions"
+        puts "(4) Return to the list of all cocktails"
         input = gets.strip
         subject = nil 
         info = nil 
         case input.downcase
-        when "1", "Ingredients"
+        when "1", "Description"
+            subject = "Description"
+            info = drink.description
+            puts "------------------------"
+            puts "Description of the #{drink.name}".light_purple
+            puts "------------------------"
+            puts ""
+            puts "Did you know?"
+            puts "#{drink.image}"
+            puts "#{drink.description}"
+        when "2","Ingredients"
             subject = "Ingredients"
             info = drink.ingredients 
-        when "2","Instructions"
+            puts "------------------------"
+            puts "#{drink.name}'s ingredients'".light_purple
+            puts "------------------------"
+            puts ""
+            puts "#{drink.ingredients}"
+        when "3","Instructions"
             subject = "Instructions"
-            info = drink.instructions  
-        when "exit" 
+            info = drink.ingredients 
+            puts "------------------------"
+            puts "How to make #{drink.name}".light_purple
+            puts "------------------------"
+            puts ""
+            puts "#{drink.instructions}"   
+        when "4" 
             exit 
 
         else
