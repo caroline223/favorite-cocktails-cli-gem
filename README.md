@@ -4,7 +4,7 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 
 FavoriteCocktails is an app that allows you to explore and learn more about some of your favorite, well-known cocktails as well as some that you may not have heard of before. 
 
-<img src= "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/margarita-1592951298.jpg?crop=1xw:1xh;center,top&resize=980:*" height ="50" width="50">
+<img src= "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/margarita-1592951298.jpg?crop=1xw:1xh;center,top&resize=980:*" height ="150" width="150">
 
 FavoriteCocktails lists names of cocktails including their description, ingredients, and recipe. You can learn more about the many different types of cocktails right here in the FavoriteCocktailsApp or copy/paste the link in your browser!
 
