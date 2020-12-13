@@ -1,6 +1,6 @@
 class FavoriteCocktails::Cocktails
 
-    attr_accessor :name, :ingredients, :recipe, :description, :page_url 
+    attr_accessor :name, :ingredients, :instructions, :description, :page_url 
 
     @@all = []
 

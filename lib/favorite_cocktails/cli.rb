@@ -68,6 +68,7 @@ class FavoriteCocktails::CLI
         puts "------------------------"
         puts ""
         puts "Did you know?"
+        puts "#{drink.image}"
         puts "#{drink.description}"
         cocktails_more_info(drink)
     end
