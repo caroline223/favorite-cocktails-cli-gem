@@ -12,7 +12,6 @@ class FavoriteCocktails::Scraper
         favorite_cocktails = []
         doc = Nokogiri::HTML(open(url))
         drinks = doc.css(".details a").text.split("plus")
-            binding.pry
         drinks.each do |d|
             drink = {}
             drink[:name] = d.text
@@ -23,21 +22,17 @@ class FavoriteCocktails::Scraper
     end
 
     
-    #def self.scrape_drinks
-        #page_url = 'https://makemeacocktail.com/recipes/100+Cocktails/'
+    def self.scrape_drinks(url)
 
-        #drinks = Nokogiri::HTML(open(page_url))
-        #cocktail_drinks = drinks.css("a")
-        #cocktail_drinks.each do |cocktails|
-                #hash = {
-                #name: cocktails.css("h5").text.split, 
-                #rating: cocktails.css() 
-        #}        
-        #end
-        #binding.pry
-        #cocktail_description = description.css()
-        
-        #FavoriteCocktails.new(cocktails)
-    #end
+        url = 'https://makemeacocktail.com/recipes/100+Cocktails/'
+        drink = {}
+        doc = Nokogiri::HTML(open(url))
+        drink[:]
+
+
+
+
+        drink
+    end
 
 end 
