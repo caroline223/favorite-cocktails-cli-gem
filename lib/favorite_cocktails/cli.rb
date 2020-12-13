@@ -14,9 +14,9 @@ class FavoriteCocktails::CLI
     end
 
     def create_cocktails
-        cocktails_array = FavoriteCocktails::Scraper.scrape_index(BASE_URL + "/11/bar-drink-mixes.html")
-        cocktails_array.collect do |cocktails|
-            FavoriteCocktails::Cocktails.new(cocktails[:name], cocktails[:page_url])
+        drinks_array = FavoriteCocktails::Scraper.scrape_index(BASE_URL + "/11/bar-drink-mixes.html")
+        drinks_array.collect do |drink|
+            FavoriteCocktails::Cocktails.new(drink[:name], drink[:page_url])
         end
     end
 
