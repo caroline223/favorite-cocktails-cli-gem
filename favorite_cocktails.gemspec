@@ -1,4 +1,4 @@
-require 'lib/favorite_cocktails/version'
+require_relative 'lib/favorite_cocktails/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "favorite_cocktails"
@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   end
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.executables << 'favorite_cocktails'
+  
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler"
@@ -25,4 +25,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
 
   spec.add_dependency "nokogiri" , '>= 1.8.5'
+
+gem "rake", "~> 12.0"
+gem "rspec", "~> 3.0"
+gem "bundler"
+gem "pry"
+
 end
