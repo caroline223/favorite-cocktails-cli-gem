@@ -10,6 +10,8 @@ FavoriteCocktails lists names of cocktails including their description, ingredie
 
 All content published by Favorite Cocktails is the property og Favorite Cocktails and is protected by copyright, trademark, and other intellectual property laws. 
 
+For better insight on how to use my app, see my video walkthrough! Enjoy!
+
 ## Installation
 
 Add this line to your application's Gemfile:
