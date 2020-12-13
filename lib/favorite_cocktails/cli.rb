@@ -9,7 +9,7 @@ class FavoriteCocktails::CLI
         puts "------------------------"
         drinks = create_cocktails
         @c = 0
-        @f = 20
+        @f = 1
         name_cocktails(drinks)
     end
 
@@ -24,10 +24,10 @@ class FavoriteCocktails::CLI
     def name_cocktails(drinks)
         puts ""
         drinks[@c..@c+@f].each_with_index(@c +1){|d,i| puts "[#{i}] #{d.name}"}
-        puts "(all)" if  @f != 64
-        puts "(previous)" if @c + @f >= 64 && @f == 4 
-        puts "(next)" if @c == 0 && @f == 4
-        puts "(previous || next)" if @c + @f >= 64 && @f == 4 
+        puts "(all)" if  @f != 19
+        puts "(previous)" if @c + @f >= 19 && @f == 1
+        puts "(next)" if @c == 0 && @f == 1
+        puts "(previous || next)" if @c + @f < 19 && @c >= 10 
         puts ""
         puts "Type (exit) at any time to quit the search."
         puts ""
@@ -39,7 +39,7 @@ class FavoriteCocktails::CLI
             cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|drink| drink.name.downcase == input.downcase})
         elsif input.downcase == "all"
             @c = 0
-            @f = 64
+            @f = 19
             name_cocktails(drinks)
         elsif input.downcase == "previous"
             @c -= 10
@@ -50,7 +50,7 @@ class FavoriteCocktails::CLI
         elsif input.downcase == "previous" && @c == 0
             puts "That's all of the drinks!"
             name_cocktails(drinks)
-        elsif input.downcase == "next" && @c+@f == 64
+        elsif input.downcase == "next" && @c+@f == 19
             puts "You've seen all of the drinks! You must of been really thirsty :)"
             name_cocktails(drinks)
         else

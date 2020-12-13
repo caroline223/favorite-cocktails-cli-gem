@@ -11,7 +11,6 @@ class FavoriteCocktails::Cocktails
 
    def add_information(information)
        information.each do |key, value|
-        self.class.attr_accessor key
         self.send("#{key}=", value)
        end
    end
