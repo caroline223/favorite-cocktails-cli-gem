@@ -9,7 +9,7 @@ class FavoriteCocktails::CLI
         puts "------------------------"
         drinks = create_cocktails
         @c = 0
-        @f = 4
+        @f = 20
         name_cocktails(drinks)
     end
 
@@ -23,7 +23,7 @@ class FavoriteCocktails::CLI
 
     def name_cocktails(drinks)
         puts ""
-        drinks[@c..@c+@f].each_with_index(@c +1){|a,i| puts "[#{i}] #{a.name}"}
+        drinks[@c..@c+@f].each_with_index(@c +1){|d,i| puts "[#{i}] #{d.name}"}
         puts "(all)" if  @f != 64
         puts "(previous)" if @c + @f >= 64 && @f == 4 
         puts "(next)" if @c == 0 && @f == 4
@@ -35,8 +35,8 @@ class FavoriteCocktails::CLI
         input = gets.strip
         if input.to_i > 0 && input.to_i <= drinks.length
             cocktails_more_info(FavoriteCocktails::Cocktails.all[input.to_i - 1])
-        elsif cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|cocktails| cocktails.name.downcase == input.downcase})
-            cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|cocktails| cocktails.name.downcase == input.downcase})
+        elsif cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|drink| drink.name.downcase == input.downcase})
+            cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|drink| drink.name.downcase == input.downcase})
         elsif input.downcase == "all"
             @c = 0
             @f = 64
@@ -119,11 +119,11 @@ class FavoriteCocktails::CLI
             when "exit"
                 exit
     
-    else
-        puts "Whoa there! That's not a vaild input. Please try again."
-        cocktails_more_info(drink)
-    end
-    cocktails_specific_info(drink, subject, info)
+        else
+            puts "Whoa there! That's not a vaild input. Please try again."
+            cocktails_more_info(drink, subject,info)
+        end
+    
     end
 
 
