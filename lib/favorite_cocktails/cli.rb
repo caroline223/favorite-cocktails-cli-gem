@@ -81,22 +81,24 @@ class FavoriteCocktails::CLI
         input = gets.strip
         subject = nil 
         info = nil 
-        case = input.downcase
+        case input.downcase
         when "1", "Ingredients"
             subject = "Ingredients"
-            info = drinks.ingredients ,
-        when "2", "Recipe"
+            info = drinks.ingredients 
+        when "2","Recipe"
             subject = "Recipe"
-            info = drinks.recipe  ,
+            info = drinks.recipe  
         when "exit" 
             exit 
 
         else
             puts "Whoa there! That's not a vaild input. Please try again."
+            cocktails_more_info(drinks)
         end
 
         cocktails_specific_info(drinks, subject, info)
     end
+
 
     def cocktails_specific_info(drinks, subject, info) #Presents more information to the user
         puts "------------------------"
@@ -110,9 +112,9 @@ class FavoriteCocktails::CLI
         input = gets.strip
         case input.downcase
             when "1"
-                cocktails_more_info(drinks) ,
+                cocktails_more_info(drinks) 
             when "2"
-                start ,
+                start 
             when "exit"
                 exit
     
