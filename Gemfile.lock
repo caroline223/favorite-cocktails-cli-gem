@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     favorite_cocktails (0.1.0)
-      nokogiri
+      nokogiri (>= 1.8.5)
 
 GEM
   remote: https://rubygems.org/
