@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
+require "bundler/setup"
 require_relative '../lib/environment'
 
 
-FavoriteCocktails::Scraper.scrape_index
+FavoriteCocktails::Scraper.scrape_index(URI)
