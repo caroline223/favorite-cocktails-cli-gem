@@ -6,10 +6,8 @@ require 'pry'
 
 class FavoriteCocktails::Scraper
 
-    BASE_URL = "https://makemeacocktail.com/"
-
     def self.scrape_index(url)
-        page_url = 'https://makemeacocktail.com/recipes/100+Cocktails/'
+        url = 'https://makemeacocktail.com/recipes/100+Cocktails/'
 
         favorite_cocktails = []
         doc = Nokogiri::HTML(open(url))
