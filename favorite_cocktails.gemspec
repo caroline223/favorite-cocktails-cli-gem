@@ -26,4 +26,3 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "nokogiri" , '>= 1.8.5'
 end
-ß
