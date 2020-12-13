@@ -4,8 +4,13 @@ class FavoriteCocktails::Cocktails
 
     @@all = []
 
-   def initialize(cocktails_hash)
-       cocktails_hash.each do |key, value|
+    def initialize(name, page_url)
+        @name = name
+        @page_url = page_url
+    end
+
+   def add_information(information)
+       information.each do |key, value|
         self.class.attr_accessor key
         self.send("#{key}=", value)
        end
