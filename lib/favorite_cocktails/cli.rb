@@ -84,10 +84,10 @@ class FavoriteCocktails::CLI
         case = input.downcase
         when "1", "Ingredients"
             subject = "Ingredients"
-            info = drinks.ingredients 
+            info = drinks.ingredients ,
         when "2", "Recipe"
             subject = "Recipe"
-            info = drinks.recipe  
+            info = drinks.recipe  ,
         when "exit" 
             exit 
 
@@ -109,17 +109,18 @@ class FavoriteCocktails::CLI
         puts "(2) Uncover a different cocktail."
         input = gets.strip
         case input.downcase
-        when "1"
-            cocktails_more_info(drinks)
-        when "2"
-            start 
-        when "exit"
-            exit
+            when "1"
+                cocktails_more_info(drinks) ,
+            when "2"
+                start ,
+            when "exit"
+                exit
     
     else
         puts "Whoa there! That's not a vaild input. Please try again."
-        cocktails_specific_info(drinks, subject, info)
+        cocktails_more_info(drinks)
     end
+    cocktails_specific_info(drinks, subject, info)
     end
 
 
