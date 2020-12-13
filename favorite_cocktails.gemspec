@@ -6,8 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["caroline223"]
   spec.email         = ["carolineforrester22@gmail.com"]
 
-  spec.summary       = "This is a summary."
-  spec.description   = "This is a description."
+  spec.summary       = %q{A gem that provides information on many different types of cocktails}
   spec.homepage      = "https://github.com/caroline223/favorite_cocktails"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
@@ -20,10 +19,11 @@ Gem::Specification.new do |spec|
   spec.executables << 'favorite_cocktails'
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'pry'
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "pry"
 
-  spec.add_dependency 'nokogiri' , '>= 1.8.5'
+  spec.add_dependency "nokogiri" , '>= 1.8.5'
 end
+ß
