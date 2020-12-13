@@ -5,4 +5,4 @@ require_relative '../lib/environment'
 
 
 FavoriteCocktails::Scraper.scrape_index(URI)
-FavoriteCocktails::Scraper.scrape_drinks(URI)
+FavoriteCocktails::Scraper.scrape_info(URI)

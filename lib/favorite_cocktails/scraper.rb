@@ -31,8 +31,7 @@ class FavoriteCocktails::Scraper
         drink[:image] = doc.css("div span picture img").attr("src").value 
         drink[:ingredients] = doc.css("div p:nth-child(2)").text.split("-")
         drink[:instructions] = doc.css("div .listicle-slide-dek p em").text.split(".")
-        binding.pry
-        #drink
+        drink
     end
         
 
