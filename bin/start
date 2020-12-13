@@ -3,4 +3,4 @@
 require_relative '../lib/environment'
 
 
-Scraper.scrape_index
+FavoriteCocktails::Scraper.scrape_index
