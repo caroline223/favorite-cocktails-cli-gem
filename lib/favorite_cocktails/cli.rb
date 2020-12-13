@@ -1,6 +1,6 @@
 class FavoriteCocktails::CLI
 
-    BASE_URL = 'https://webstaurantstore.com/'
+    BASE_URL = 'https://www.townandcountrymag.com'
 
     def start 
         puts "------------------------"
@@ -14,7 +14,7 @@ class FavoriteCocktails::CLI
     end
 
     def create_cocktails
-        drinks_array = FavoriteCocktails::Scraper.scrape_index(BASE_URL + "/11/bar-drink-mixes.html")
+        drinks_array = FavoriteCocktails::Scraper.scrape_index(BASE_URL + "/leisure/drinks/g13092298/popular-bar-drinks-to-order/")
         drinks_array.collect do |drink|
             FavoriteCocktails::Cocktails.new(drink[:name], drink[:page_url])
         end
@@ -23,7 +23,7 @@ class FavoriteCocktails::CLI
 
     def name_cocktails(drinks)
         puts ""
-        drinks[@c..@c+@f].each_with_indnex(@c +1){|a,i| puts "[#{i}] #{a.name}"}
+        drinks[@c..@c+@f].each_with_index(@c +1){|a,i| puts "[#{i}] #{a.name}"}
         puts "(all)" if  @f != 64
         puts "(previous)" if @c + @f >= 64 && @f == 4 
         puts "(next)" if @c == 0 && @f == 4
@@ -61,22 +61,22 @@ class FavoriteCocktails::CLI
 
     end
 
-    def drinks_description(drinks)
-        description = FavoriteCocktails::Scraper.scrape_info(BASE_URL + drinks.page_url)
+    def drinks_description(drink)
+        description = FavoriteCocktails::Scraper.scrape_info(BASE_URL + drink.page_url)
         puts "------------------------"
-        puts "Description of the #{drinks.name}".light_purple
+        puts "Description of the #{drink.name}".light_purple
         puts "------------------------"
         puts ""
         puts "Did you know?"
-        puts "#{drinks.description}"
-        cocktails_more_info(drinks)
+        puts "#{drink.description}"
+        cocktails_more_info(drink)
     end
 
 
-    def cocktails_more_info(drinks)
-        puts "FInd out more information about the #{cocktail.name}:"
+    def cocktails_more_info(drink)
+        puts "FInd out more information about the #{drink.name}:"
         puts "(1) Ingredients"
-        puts "(2) Recipe"
+        puts "(2) Instructions"
         puts "(3) Return to the list of all cocktails"
         input = gets.strip
         subject = nil 
@@ -84,30 +84,30 @@ class FavoriteCocktails::CLI
         case input.downcase
         when "1", "Ingredients"
             subject = "Ingredients"
-            info = drinks.ingredients 
-        when "2","Recipe"
-            subject = "Recipe"
-            info = drinks.recipe  
+            info = drink.ingredients 
+        when "2","Instructions"
+            subject = "Instructions"
+            info = drink.instructions  
         when "exit" 
             exit 
 
         else
             puts "Whoa there! That's not a vaild input. Please try again."
-            cocktails_more_info(drinks)
+            cocktails_more_info(drink)
         end
 
-        cocktails_specific_info(drinks, subject, info)
+        cocktails_specific_info(drink, subject, info)
     end
 
 
-    def cocktails_specific_info(drinks, subject, info) #Presents more information to the user
+    def cocktails_specific_info(drink, subject, info) #Presents more information to the user
         puts "------------------------"
         puts "------------------------"
-        puts "#{drinks.name} ~ #{subject}".light_purple
+        puts "#{drink.name} ~ #{subject}".light_purple
         puts "------------------------"
         puts "------------------------"
 
-        puts "(1) Discover more about the #{drinks.name}"
+        puts "(1) Discover more about the #{drink.name}"
         puts "(2) Uncover a different cocktail."
         input = gets.strip
         case input.downcase
@@ -120,9 +120,9 @@ class FavoriteCocktails::CLI
     
     else
         puts "Whoa there! That's not a vaild input. Please try again."
-        cocktails_more_info(drinks)
+        cocktails_more_info(drink)
     end
-    cocktails_specific_info(drinks, subject, info)
+    cocktails_specific_info(drink, subject, info)
     end
 
 
