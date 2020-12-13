@@ -25,7 +25,7 @@ class FavoriteCocktails::CLI
         puts ""
         drinks[@c..@c+@f].each_with_indnex(@c +1){|a,i| puts "[#{i}] #{a.name}"}
         puts "(all)" if  @f != 64
-        puts "(previous)" if @c + @ f >= 64 && @f == 4 
+        puts "(previous)" if @c + @f >= 64 && @f == 4 
         puts "(next)" if @c == 0 && @f == 4
         puts "(previous || next)" if @c + @f >= 64 && @f == 4 
         puts ""
