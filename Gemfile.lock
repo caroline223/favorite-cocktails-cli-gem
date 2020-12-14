@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     favorite_cocktails (0.1.0)
-      nokogiri (>= 2.6.1)
 
 GEM
   remote: https://rubygems.org/
@@ -37,6 +36,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   favorite_cocktails!
+  nokogiri
   pry
   rake (~> 12.0)
   rspec (~> 3.0)
