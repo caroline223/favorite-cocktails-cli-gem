@@ -1,4 +1,6 @@
-require_relative 'lib/favorite_cocktails/version'
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "favorite_cocktails/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "favorite_cocktails"
@@ -6,26 +8,22 @@ Gem::Specification.new do |spec|
   spec.authors       = ["caroline223"]
   spec.email         = ["carolineforrester22@gmail.com"]
 
-  spec.summary       = "A gem that provides information on many different types of cocktails"
-  spec.homepage      = "https://github.com/caroline223/favorite_cocktails"
+  spec.summary       = %q{A gem that provides general information on different types of cocktails}
+  spec.homepage      = "https://github.com/caroline223/favorite-cocktails-cli-gem"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
-  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
   end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+
   
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "pry" 
+  spec.add_development_dependency "pry"
 
-  spec.add_dependency "nokogiri" 
-
-
-
+  spec.add_dependency "nokogiri", ">= 2.6.1"
 end
