@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+git_source(:github) { |favorite_cocktails| "https://github.com/#{favorite_cocktails}" }
+
 # Specify your gem's dependencies in favorite_cocktails.gemspec
 gemspec
 
