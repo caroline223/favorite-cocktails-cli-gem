@@ -12,7 +12,6 @@ class FavoriteCocktails::Scraper
         favorite_cocktails = []
         doc = Nokogiri::HTML(open(url))
         drinks = doc.css("div .listicle-slide-hed").text.gsub("\n"," ").gsub("\t","").strip
-        binding.pry 
         drinks.each do |d|
             drink = {}
             drink[:name] = d.text 

@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["caroline223"]
   spec.email         = ["carolineforrester22@gmail.com"]
 
-  spec.summary       = %q{A gem that provides information on many different types of cocktails}
+  spec.summary       = "A gem that provides information on many different types of cocktails"
   spec.homepage      = "https://github.com/caroline223/favorite_cocktails"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
@@ -19,16 +19,13 @@ Gem::Specification.new do |spec|
   
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec"
-  spec.add_development_dependency "pry"
+  spec.add_development_dependency "bundler", "~> 1.16"
+  spec.add_development_dependency "rake", "~> 12.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "pry" 
 
-  spec.add_dependency "nokogiri" , '>= 1.8.5'
+  spec.add_dependency "nokogiri" 
 
-gem "rake", "~> 12.0"
-gem "rspec", "~> 3.0"
-gem "bundler"
-gem "pry"
+
 
 end
