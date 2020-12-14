@@ -1,5 +1,6 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 require "favorite_cocktails/version"
 
 Gem::Specification.new do |spec|
@@ -8,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["caroline223"]
   spec.email         = ["carolineforrester22@gmail.com"]
 
-  spec.summary       = %q{A gem that provides general information on different types of cocktails}
+  spec.summary       = "A gem that provides general information on different types of cocktails"
   spec.homepage      = "https://github.com/caroline223/favorite-cocktails-cli-gem"
   spec.license       = "MIT"
 
@@ -17,13 +18,13 @@ Gem::Specification.new do |spec|
     f.match(%r{^(test|spec|features)/})
   end
 
-  
+  spec.bindir        = "bin"
+  spec.executables   = ["favorite_cocktails"]
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "pry"
-
-  spec.add_dependency "nokogiri", ">= 2.6.1"
+  spec.add_development_dependency "pry", ">= 0"
+  spec.add_development_dependency "nokogiri", ">= 0"
 end
