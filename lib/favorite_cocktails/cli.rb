@@ -4,8 +4,8 @@ class FavoriteCocktails::CLI
 
     def start 
         puts "------------------------"
-        puts "   Famous Cocktails     ".light_green
-        puts "  Care to take a sip??  ".light_blue
+        puts "   Famous Cocktails     "
+        puts "  Care to take a sip??  "
         puts "------------------------"
         drinks = create_cocktails
         @c = 0
@@ -78,7 +78,7 @@ class FavoriteCocktails::CLI
             subject = "Description"
             info = drink.description
             puts "------------------------"
-            puts "Description of the #{drink.name}".light_purple
+            puts "Description of the #{drink.name}"
             puts "------------------------"
             puts ""
             puts "Did you know?"
@@ -88,7 +88,7 @@ class FavoriteCocktails::CLI
             subject = "Ingredients"
             info = drink.ingredients 
             puts "------------------------"
-            puts "#{drink.name}'s ingredients'".light_purple
+            puts "#{drink.name}'s ingredients'"
             puts "------------------------"
             puts ""
             puts "#{drink.ingredients}"
@@ -96,7 +96,7 @@ class FavoriteCocktails::CLI
             subject = "Instructions"
             info = drink.ingredients 
             puts "------------------------"
-            puts "How to make #{drink.name}".light_purple
+            puts "How to make #{drink.name}"
             puts "------------------------"
             puts ""
             puts "#{drink.instructions}"   
@@ -115,7 +115,7 @@ class FavoriteCocktails::CLI
     def cocktails_specific_info(drink, subject, info) #Presents more information to the user
         puts "------------------------"
         puts "------------------------"
-        puts "#{drink.name} ~ #{subject}".light_purple
+        puts "#{drink.name} ~ #{subject}"
         puts "------------------------"
         puts "------------------------"
 

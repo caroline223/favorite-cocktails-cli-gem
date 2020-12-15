@@ -8,17 +8,17 @@ class FavoriteCocktails::Scraper
 
    def self.scrape_index(url)
         url = 'https://www.townandcountrymag.com/leisure/drinks/g13092298/popular-bar-drinks-to-order/'
-
-        favorite_cocktails = []
+        mixed = []
         doc = Nokogiri::HTML(open(url))
-        drinks = doc.css("div .listicle-slide-hed").text.gsub("\n"," ").gsub("\t","").strip
+        drinks = doc.css("div .listicle-slide-hed").text.gsub("\n"," ").gsub("\t","").strip 
         drinks.each do |d|
-            drink = {}
-            drink[:name] = d.text 
-            drink[:page_url] = d.attr("href")
-            favorite_cocktails << drink
+            drink = {
+            [:name] => d.text ,  
+            [:page_url] => d.attr("href")
+            }   
+            mixed << drink
         end
-        favorite_cocktails
+        mixed
     end
 
     
