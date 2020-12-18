@@ -23,7 +23,7 @@ class FavoriteCocktails::CLI
 
     def name_cocktails(drinks)
         puts ""
-        drinks[@c..@c+@f].each_with_index(@c +1){|d,i| puts "[#{i}] #{d.name}"}
+        drinks[@c..@c+@f].each.with_index(@c +1){|d,i| puts "[#{i}] #{d.name}"}
         puts "(all)" if  @f != 19
         puts "(previous)" if @c + @f >= 19 && @f == 1
         puts "(next)" if @c == 0 && @f == 1

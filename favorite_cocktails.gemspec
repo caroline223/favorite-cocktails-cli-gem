@@ -19,13 +19,11 @@ Gem::Specification.new do |spec|
   end
 
   
-  spec.executables << 'favorite_cocktails'
-  
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "pry", ">= 0"
-  spec.add_development_dependency "nokogiri", ">= 0"
+  spec.add_development_dependency "nokogiri", "~>1.10"
 end

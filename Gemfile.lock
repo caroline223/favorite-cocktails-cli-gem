@@ -36,7 +36,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   favorite_cocktails!
-  nokogiri
+  nokogiri (~> 1.10)
   pry
   rake (~> 12.0)
   rspec (~> 3.0)

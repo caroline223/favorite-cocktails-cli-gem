@@ -7,6 +7,7 @@ class FavoriteCocktails::Cocktails
     def initialize(name, page_url)
         @name = name
         @page_url = page_url
+        save 
     end
 
    def add_information(information)
