@@ -8,26 +8,24 @@ class FavoriteCocktails::CLI
         puts "  Care to take a sip??  "
         puts "------------------------"
         drinks = create_cocktails
+        #binding.pry
         @c = 0
-        @f = 1
+        @f = 11
         name_cocktails(drinks)
     end
 
     def create_cocktails
-        drinks_array = FavoriteCocktails::Scraper.scrape_index(BASE_URL + "/leisure/drinks/g13092298/popular-bar-drinks-to-order/")
-        drinks_array.collect do |drink|
-            FavoriteCocktails::Cocktails.new(drink[:name], drink[:page_url])
-        end
+         FavoriteCocktails::Scraper.scrape_index(BASE_URL + "/leisure/drinks/g13092298/popular-bar-drinks-to-order/")
     end
 
 
     def name_cocktails(drinks)
         puts ""
         drinks[@c..@c+@f].each.with_index(@c +1){|d,i| puts "[#{i}] #{d.name}"}
-        puts "(all)" if  @f != 19
-        puts "(previous)" if @c + @f >= 19 && @f == 1
-        puts "(next)" if @c == 0 && @f == 1
-        puts "(previous || next)" if @c + @f < 19 && @c >= 10 
+        puts "all" if  @c != 21
+        puts "previous" if @c + @f >= 11 
+        puts "next" if @c == 0 
+        #puts "previous || next" if @c + @f < 19 && @c >= 10 
         puts ""
         puts "Type (exit) at any time to quit the search."
         puts ""
@@ -35,35 +33,35 @@ class FavoriteCocktails::CLI
         input = gets.strip
         if input.to_i > 0 && input.to_i <= drinks.length
             cocktails_more_info(FavoriteCocktails::Cocktails.all[input.to_i - 1])
-        elsif cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|drink| drink.name.downcase == input.downcase})
-            cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|drink| drink.name.downcase == input.downcase})
+        #elsif cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|drink| drink.name.downcase == input.downcase})
+            #cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|drink| drink.name.downcase == input.downcase})
         elsif input.downcase == "all"
-            @c = 0
-            @f = 19
+            @c = 21
             name_cocktails(drinks)
         elsif input.downcase == "previous"
-            @c -= 10
+            @c = 0
             name_cocktails(drinks)
         elsif input.downcase == "next"
-            @c += 10
+            @c += 11
             name_cocktails(drinks)
         elsif input.downcase == "previous" && @c == 0
             puts "That's all of the drinks!"
             name_cocktails(drinks)
-        elsif input.downcase == "next" && @c+@f == 19
+        elsif input.downcase == "next" && @c == 11
             puts "You've seen all of the drinks! You must of been really thirsty :)"
             name_cocktails(drinks)
         else
             puts ""
             puts "Not quite. Please try again."
-            self.name_cocktails(drinks)
+            name_cocktails(drinks)
         end
 
     end
 
     
     def cocktails_more_info(drink)
-        information = FavoriteCocktails::Scraper.scrape_info(BASE_URL + drink.page_url)
+        #binding.pry
+        information = FavoriteCocktails::Scraper.scrape_info(drink)
         drink.add_information(information)
         puts "FInd out more information about the #{drink.name}:"
         puts "(1) Description"
