@@ -22,13 +22,13 @@ class FavoriteCocktails::Scraper
     end
     
     def self.scrape_info(cocktail)
-        doc = Nokogiri::HTML(URI.open(cocktail.page_url))
+        page2_url = 'https://www.townandcountrymag.com/leisure/drinks/g13092298/popular-bar-drinks-to-order/'
+        doc = Nokogiri::HTML(URI.open(page2_url))
         binding.pry
-        description = doc.css("div.listicle-slide-dek p:first-child").text.split(":")
-        cocktail.image = #doc.css("div span picture img").attr("src").value 
-        cocktail.ingredients = #doc.css("div p:nth-child(2)").text.split("-")
-        cocktail.instructions = #doc.css("div.listicle-slide-dek p em").text.split(".")
+        cocktail.description = doc.css("div.listicle-slide-dek p:first-child").text.split(":")
+        cocktail.image = doc.css("span picture img").attr("src").value 
+        cocktail.ingredients = doc.css("div.listicle-slide-dek p:nth-child(2)").text.split("-")
+        cocktail.instructions = doc.css("div.listicle-slide-dek p:nth-child(3) em").text.split(".")
     end
-        
-
+    
 end 
