@@ -1,20 +1,18 @@
 class FavoriteCocktails::Cocktails
 
-    attr_accessor :name, :ingredients, :instructions, :description, :page_url 
+    attr_accessor :name, :ingredients, :instructions, :description, :page_url, :image
 
     @@all = []
 
-    def initialize(name, page_url)
-        @name = name
-        @page_url = page_url
+    def initialize(name, page_url, image, description, ingredients, instructions)
+        self.name = name
+        self.page_url = page_url
+        self.image = image
+        self.description = description
+        self.ingredients = ingredients
+        self.instructions = instructions
         save 
     end
-
-   def add_information(information)
-       information.each do |key, value|
-        self.send("#{key}=", value)
-       end
-   end
 
    def save
     self.class.all << self

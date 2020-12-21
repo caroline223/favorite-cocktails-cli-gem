@@ -7,7 +7,7 @@ class FavoriteCocktails::CLI
         puts "   Famous Cocktails     "
         puts "  Care to take a sip??  "
         puts "------------------------"
-        drinks = create_cocktails
+        drinks = create_cocktails unless FavoriteCocktails::Cocktails.all.size > 0
         #binding.pry
         @c = 0
         @f = 11
@@ -22,21 +22,19 @@ class FavoriteCocktails::CLI
     def name_cocktails(drinks)
         puts ""
         drinks[@c..@c+@f].each.with_index(@c +1){|d,i| puts "[#{i}] #{d.name}"}
-        puts "all" if  @c != 21
-        puts "previous" if @c + @f >= 11 
-        puts "next" if @c == 0 
-        #puts "previous || next" if @c + @f < 19 && @c >= 10 
+        puts "All" if  @c != 21
+        puts "Previous" if @c + @f >= 12 
+        puts "Next" if @c == 0 
         puts ""
-        puts "Type (exit) at any time to quit the search."
+        puts "Type [Exit] at any time to quit the search."
         puts ""
-        puts "Type in the cocktail drink or number to learn more about the cocktail."
+        puts "Type in the cocktail number to learn more about the cocktail."
+        puts "Optional: Type [Next] to go to the next page, or [All] to see all of the drinks."
         input = gets.strip
         if input.to_i > 0 && input.to_i <= drinks.length
             cocktails_more_info(FavoriteCocktails::Cocktails.all[input.to_i - 1])
-        #elsif cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|drink| drink.name.downcase == input.downcase})
-            #cocktails_more_info(FavoriteCocktails::Cocktails.all.detect{|drink| drink.name.downcase == input.downcase})
         elsif input.downcase == "all"
-            @c = 21
+            @f = 21
             name_cocktails(drinks)
         elsif input.downcase == "previous"
             @c = 0
@@ -44,12 +42,8 @@ class FavoriteCocktails::CLI
         elsif input.downcase == "next"
             @c += 11
             name_cocktails(drinks)
-        elsif input.downcase == "previous" && @c == 0
-            puts "That's all of the drinks!"
-            name_cocktails(drinks)
-        elsif input.downcase == "next" && @c == 11
-            puts "You've seen all of the drinks! You must of been really thirsty :)"
-            name_cocktails(drinks)
+        elsif input.downcase == "exit"
+            exit
         else
             puts ""
             puts "Not quite. Please try again."
@@ -59,51 +53,50 @@ class FavoriteCocktails::CLI
     end
 
     
-    def cocktails_more_info(drink)
+    def cocktails_more_info(cocktail)
         #binding.pry
-        information = FavoriteCocktails::Scraper.scrape_info(drink)
-        drink.add_information(information)
-        puts "FInd out more information about the #{drink.name}:"
-        puts "(1) Description"
-        puts "(2) Ingredients"
-        puts "(3) Instructions"
-        puts "(4) Return to the list of all cocktails"
+        #information = FavoriteCocktails::Scraper.scrape_info(cocktail)
+        #cocktail.add_information(information)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            .add_information(information)
+        puts "FInd out more information about the #{cocktail.name}:"
+        puts "[1] Description"
+        puts "[2] Ingredients"
+        puts "[3] Instructions"
+        puts "[4] Return to the list of all cocktails"
         input = gets.strip
         subject = nil 
         info = nil 
         case input.downcase
         when "1", "Description"
             subject = "Description"
-            info = drink.description
+            info = cocktail.description
             puts "------------------------"
-            puts "Description of the #{drink.name}"
+            puts "Description of the #{cocktail.name}"
             puts "------------------------"
             puts ""
             puts "Did you know?"
-            puts "#{drink.image}"
-            puts "#{drink.description}"
+            puts "#{cocktail.image}"
+            puts "#{cocktail.description}"
         when "2","Ingredients"
             subject = "Ingredients"
-            info = drink.ingredients 
+            info = cocktail.ingredients 
             puts "------------------------"
-            puts "#{drink.name}'s ingredients'"
+            puts "#{cocktail.name}'s Ingredients'"
             puts "------------------------"
             puts ""
-            puts "#{drink.ingredients}"
+            puts "#{cocktail.ingredients}"
         when "3","Instructions"
             subject = "Instructions"
-            info = drink.ingredients 
+            info = cocktail.ingredients 
             puts "------------------------"
-            puts "How to make #{drink.name}"
+            puts "How to make #{cocktail.name}"
             puts "------------------------"
             puts ""
-            puts "#{drink.instructions}"   
+            puts "#{cocktail.instructions}"   
         when "4" 
             exit 
-
         else
             puts "Whoa there! That's not a vaild input. Please try again."
-            cocktails_more_info(drink)
+            cocktails_more_info(cocktail)
         end
 
         cocktails_specific_info(drink, subject, info)
@@ -113,19 +106,19 @@ class FavoriteCocktails::CLI
     def cocktails_specific_info(drink, subject, info) #Presents more information to the user
         puts "------------------------"
         puts "------------------------"
-        puts "#{drink.name} ~ #{subject}"
+        puts "#{cocktail.name} ~ #{subject}"
         puts "------------------------"
         puts "------------------------"
 
-        puts "(1) Discover more about the #{drink.name}"
-        puts "(2) Uncover a different cocktail."
-        puts "(3) Return to main menu"
+        puts "[1] Discover more about the #{cocktail.name}"
+        puts "[2] Uncover a different cocktail."
+        puts "[3] Exit the program."
         input = gets.strip
         case input.downcase
             when "1"
                 cocktails_more_info(drinks) 
             when "2"
-                start 
+                name_cocktails(drinks) 
             when "3"
                 exit
     
@@ -137,7 +130,7 @@ class FavoriteCocktails::CLI
     end
 
 
-    def exit #Upon leaving the program, give user a parting message
+    def exit 
         puts "Thanks for visiting this page!"
         puts "Remember, stay thirsty my friends."
     end
