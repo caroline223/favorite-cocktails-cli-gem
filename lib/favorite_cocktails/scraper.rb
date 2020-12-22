@@ -9,8 +9,8 @@ class FavoriteCocktails::Scraper
    def self.scrape_index(url)
         url = 'https://www.townandcountrymag.com/leisure/drinks/g13092298/popular-bar-drinks-to-order/'
         doc = Nokogiri::HTML(URI.open(url))
-        drinks = doc.css("div.listicle-slide")#.text.gsub("\n"," ").gsub("\t","").strip 
-        drinks.map do |d|
+        cocktail = doc.css("div.listicle-slide")#.text.gsub("\n"," ").gsub("\t","").strip 
+        cocktail.map do |d|
             #binding.pry 
             page_url = nil  
             name = d.css("div.listicle-slide-hed").text.gsub(/[\n\t]/,"")

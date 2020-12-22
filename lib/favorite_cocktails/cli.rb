@@ -49,15 +49,14 @@ class FavoriteCocktails::CLI
             puts "Not quite. Please try again."
             name_cocktails(cocktail)
         end
-
     end
 
     
     def cocktails_more_info(cocktail)
         #binding.pry
-        #information = FavoriteCocktails::Scraper.scrape_info(cocktail)
-        #cocktail.add_information(information)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            .add_information(information)
-        puts "FInd out more information about the #{cocktail.name}:"
+        #information = FavoriteCocktails::Scraper.scrape_info(cocktail)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   .add_information(information)
+        puts "#{cocktail.name}:"
+        puts "------------------------"
         puts "[1] Description"
         puts "[2] Ingredients"
         puts "[3] Instructions"
@@ -80,7 +79,7 @@ class FavoriteCocktails::CLI
             subject = "Ingredients"
             info = cocktail.ingredients 
             puts "------------------------"
-            puts "#{cocktail.name}'s Ingredients'"
+            puts "#{cocktail.name}'s Ingredients"
             puts "------------------------"
             puts ""
             puts "#{cocktail.ingredients}"
@@ -93,22 +92,21 @@ class FavoriteCocktails::CLI
             puts ""
             puts "#{cocktail.instructions}"   
         when "4" 
-            exit 
+            name_cocktails(cocktail)
         else
             puts "Whoa there! That's not a vaild input. Please try again."
             cocktails_more_info(cocktail)
         end
-
         cocktails_specific_info(cocktail, subject, info)
     end
 
 
     def cocktails_specific_info(cocktail, subject, info) #Presents more information to the user
+        puts " "
         puts "------------------------"
+        puts "Learn more about #{cocktail.name}"
         puts "------------------------"
-        puts "#{cocktail.name} ~ #{subject}"
-        puts "------------------------"
-        puts "------------------------"
+        puts " "
 
         puts "[1] Discover more about the #{cocktail.name}"
         puts "[2] Uncover a different cocktail."
@@ -132,7 +130,7 @@ class FavoriteCocktails::CLI
 
     def exit 
         puts "Thanks for visiting this page!"
-        puts "Remember, stay thirsty my friends."
+        puts "Remember, stay thirsty my friends :) ."
     end
 
 end 
