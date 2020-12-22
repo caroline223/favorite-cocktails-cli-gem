@@ -7,11 +7,11 @@ class FavoriteCocktails::CLI
         puts "   Famous Cocktails     "
         puts "  Care to take a sip??  "
         puts "------------------------"
-        drinks = create_cocktails unless FavoriteCocktails::Cocktails.all.size > 0
+        cocktail = create_cocktails unless FavoriteCocktails::Cocktails.all.size > 0
         #binding.pry
         @c = 0
         @f = 11
-        name_cocktails(drinks)
+        name_cocktails(cocktail)
     end
 
     def create_cocktails
@@ -19,9 +19,9 @@ class FavoriteCocktails::CLI
     end
 
 
-    def name_cocktails(drinks)
+    def name_cocktails(cocktail)
         puts ""
-        drinks[@c..@c+@f].each.with_index(@c +1){|d,i| puts "[#{i}] #{d.name}"}
+        cocktail[@c..@c+@f].each.with_index(@c +1){|d,i| puts "[#{i}] #{d.name}"}
         puts "All" if  @c != 21
         puts "Previous" if @c + @f >= 12 
         puts "Next" if @c == 0 
@@ -31,23 +31,23 @@ class FavoriteCocktails::CLI
         puts "Type in the cocktail number to learn more about the cocktail."
         puts "Optional: Type [Next] to go to the next page, or [All] to see all of the drinks."
         input = gets.strip
-        if input.to_i > 0 && input.to_i <= drinks.length
+        if input.to_i > 0 && input.to_i <= cocktail.length
             cocktails_more_info(FavoriteCocktails::Cocktails.all[input.to_i - 1])
         elsif input.downcase == "all"
             @f = 21
-            name_cocktails(drinks)
+            name_cocktails(cocktail)
         elsif input.downcase == "previous"
             @c = 0
-            name_cocktails(drinks)
+            name_cocktails(cocktail)
         elsif input.downcase == "next"
             @c += 11
-            name_cocktails(drinks)
+            name_cocktails(cocktail)
         elsif input.downcase == "exit"
             exit
         else
             puts ""
             puts "Not quite. Please try again."
-            name_cocktails(drinks)
+            name_cocktails(cocktail)
         end
 
     end
@@ -88,7 +88,7 @@ class FavoriteCocktails::CLI
             subject = "Instructions"
             info = cocktail.ingredients 
             puts "------------------------"
-            puts "How to make #{cocktail.name}"
+            puts "How to make a #{cocktail.name}"
             puts "------------------------"
             puts ""
             puts "#{cocktail.instructions}"   
@@ -99,11 +99,11 @@ class FavoriteCocktails::CLI
             cocktails_more_info(cocktail)
         end
 
-        cocktails_specific_info(drink, subject, info)
+        cocktails_specific_info(cocktail, subject, info)
     end
 
 
-    def cocktails_specific_info(drink, subject, info) #Presents more information to the user
+    def cocktails_specific_info(cocktail, subject, info) #Presents more information to the user
         puts "------------------------"
         puts "------------------------"
         puts "#{cocktail.name} ~ #{subject}"
@@ -116,15 +116,15 @@ class FavoriteCocktails::CLI
         input = gets.strip
         case input.downcase
             when "1"
-                cocktails_more_info(drinks) 
+                cocktails_more_info(cocktail) 
             when "2"
-                name_cocktails(drinks) 
+                name_cocktails(cocktail) 
             when "3"
                 exit
     
         else
             puts "Whoa there! That's not a vaild input. Please try again."
-            cocktails_more_info(drink, subject,info)
+            cocktails_more_info(cocktail, subject, info)
         end
     
     end
