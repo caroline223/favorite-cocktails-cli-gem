@@ -2,13 +2,13 @@
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/favorite_cocktails`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-FavoriteCocktails is an app that allows you to explore and learn more about some of your favorite, well-known cocktails as well as some that you may not have heard of before. 
+FavoriteCocktails is an app that allows you to explore and learn about some of your favorite well-known cocktails as well as some that you may not have heard of before. 
 
 <img src= "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/margarita-1592951298.jpg?crop=1xw:1xh;center,top&resize=980:*" height ="250" width="250">
 
 FavoriteCocktails lists names of cocktails including their description, ingredients, and recipe. You can learn more about the many different types of cocktails right here in the FavoriteCocktailsApp or copy/paste the link in your browser!
 
-All content published by Favorite Cocktails is the property og Favorite Cocktails and is protected by copyright, trademark, and other intellectual property laws. 
+All content published by Favorite Cocktails is the property of Favorite Cocktails and is protected by copyright, trademark, and other intellectual property laws. 
 
 For better insight on how to use my app, see my video walkthrough! Enjoy!
 
