@@ -17,7 +17,8 @@ class FavoriteCocktails::Scraper
             image = d.css("span picture img").attr("src").value if d.css("span picture img").attr("src")
             description = d.css("div.listicle-slide-dek p:first-child").text.split(":").join(". ")
             ingredients = d.css("div.listicle-slide-dek p:nth-child(2)").text.split("-").delete_if {|string| string.empty?}
-            instructions = d.css("div.listicle-slide-dek p:nth-child(3) em").text.split(".").delete_if {|string| string.empty? || string == " "}
+            instructions = d.css("div.listicle-slide-dek p:nth-child(3) em").text
+            #instructions = d.css("div.listicle-slide-dek p:nth-child(3) em").text.split(".").delete_if {|string| string.empty? || string == " "}
             if d.css("div.listicle-slide-dek p:nth-child(4) a").attr("href")
                 page_url = d.css("div.listicle-slide-dek p:nth-child(4) a").attr("href").value 
             end 
