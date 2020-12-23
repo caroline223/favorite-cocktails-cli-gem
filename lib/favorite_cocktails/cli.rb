@@ -21,7 +21,7 @@ class FavoriteCocktails::CLI
 
     def name_cocktails(cocktail)
         puts ""
-        cocktail[@c..@c+@f].each.with_index(@c +1){|d,i| puts "[#{i}] #{d.name}"}
+        cocktail[@c..@c+@f].each.with_index(@c +1) {|c,i| puts "[#{i}] #{c.name}"}
         puts "All" if  @c == 21
         puts "Previous" if @c + @f >= 12 && @c + @f != 21
         puts "Next" if @c == 0 && @c + @f < 21
@@ -70,7 +70,7 @@ class FavoriteCocktails::CLI
             subject = "Description"
             info = cocktail.description
             puts "------------------------"
-            puts "Description of the #{cocktail.name}"
+            puts "#{cocktail.name}'s Description"
             puts "------------------------"
             puts ""
             puts "Did you know?"
@@ -98,11 +98,11 @@ class FavoriteCocktails::CLI
             puts "Whoa there! That's not a vaild input. Please try again."
             cocktails_more_info(cocktail)
         end
-        cocktails_specific_info(cocktail, subject, info)
+        cocktails_specific_info(cocktail, info)
     end
 
 
-    def cocktails_specific_info(cocktail, subject, info) #Presents more information to the user
+    def cocktails_specific_info(cocktail, info) #Presents more information to the user
         puts " "
         puts "------------------------"
         puts "Learn more about #{cocktail.name}"
@@ -123,7 +123,7 @@ class FavoriteCocktails::CLI
     
         else
             puts "Whoa there! That's not a vaild input. Please try again."
-            cocktails_more_info(cocktail, subject, info)
+            cocktails_specific_info(cocktail, info)
         end
     
     end
