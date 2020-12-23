@@ -22,14 +22,15 @@ class FavoriteCocktails::CLI
     def name_cocktails(cocktail)
         puts ""
         cocktail[@c..@c+@f].each.with_index(@c +1){|d,i| puts "[#{i}] #{d.name}"}
-        puts "All" if  @c != 21
-        puts "Previous" if @c + @f >= 12 
-        puts "Next" if @c == 0 
+        puts "All" if  @c == 21
+        puts "Previous" if @c + @f >= 12 && @c + @f != 21
+        puts "Next" if @c == 0 && @c + @f < 21
         puts ""
         puts "Type [Exit] at any time to quit the search."
         puts ""
         puts "Type in the cocktail number to learn more about the cocktail."
-        puts "Optional: Type [Next] to go to the next page, or [All] to see all of the drinks."
+        puts ""
+        puts "Optional: Type [Next] to go to the next page, [Previous] to go to the previous page, or [All] to see all of the drinks."
         input = gets.strip
         if input.to_i > 0 && input.to_i <= cocktail.length
             cocktails_more_info(FavoriteCocktails::Cocktails.all[input.to_i - 1])
