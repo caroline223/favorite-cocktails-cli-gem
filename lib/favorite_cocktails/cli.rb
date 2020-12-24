@@ -12,7 +12,7 @@ class FavoriteCocktails::CLI
         cocktails = create_cocktails unless FavoriteCocktails::Cocktails.all.size > 0
         #binding.pry
         @c = 0
-        @f = 11
+        @f = 10
         name_cocktails(cocktails)
     end
 
@@ -29,8 +29,8 @@ class FavoriteCocktails::CLI
         display_cocktails
         puts ""
         puts "All" if  @c == 21
-        puts "Previous" if @c + @f >= 12 && @c + @f < 21
-        puts "Next" if @c > 0 && @c + @f < 12
+        puts "Previous" if @c + @f >= 11 && @c + @f < 21
+        puts "Next" if @c > 0 && @c + @f < 11
         puts ""
         puts "Type [Exit] at any time to quit the search."
         puts ""
@@ -46,10 +46,10 @@ class FavoriteCocktails::CLI
             name_cocktails(cocktails)
         elsif input.downcase == "previous"
             @c = 0
-            @f = 11
+            @f = 10
             name_cocktails(cocktails)
         elsif input.downcase == "next"
-            @c = 12
+            @c = 11
             @f = 21 
             name_cocktails(cocktails)
         elsif input.downcase == "exit"
