@@ -54,7 +54,7 @@ class FavoriteCocktails::CLI
         elsif input.downcase == "next"
                 @c += 10 unless @c + @f >= 21
             name_cocktails(cocktails)
-        elsif input.downcase == "next" && @c+@f == 21
+        elsif input.downcase == "next" && @c+@f > 21
             puts ""
             puts "You've seen all of the drinks!"
             name_cocktails(cocktails) 
@@ -167,16 +167,16 @@ class FavoriteCocktails::CLI
         puts ""
         puts "Thanks for visiting this page!"
         puts ""
-        puts " 00000000 "
-        puts "  000000 "
-        puts "   0000 "
-        puts "    00 "
-        puts "    || "
-        puts "    || "
-        puts "    || "
-        puts "    || "
-        puts " ________ "
-        puts " -------- "
+        puts " 00000000   "
+        puts "  000000    "
+        puts "   0000     "
+        puts "    00      "
+        puts "    ||      "
+        puts "    ||      "
+        puts "    ||      "
+        puts "    ||      "
+        puts " ________   "
+        puts " --------   "
         puts ""
         puts "Remember, stay thirsty my friends :) ."
     end
