@@ -10,7 +10,6 @@ class FavoriteCocktails::CLI
         puts "  Care to take a sip??  "
         puts "------------------------"
         cocktails = create_cocktails unless FavoriteCocktails::Cocktails.all.size > 0
-        #binding.pry
         @c = 0
         @f = 9
         name_cocktails(cocktails)
@@ -24,13 +23,9 @@ class FavoriteCocktails::CLI
         FavoriteCocktails::Cocktails.all[@c..@c+@f].each.with_index(@c +1) {|c,i| puts "[#{i}] #{c.name}"}
     end
 
-
     def name_cocktails(cocktails)
         display_cocktails
         puts ""
-        #puts "All" if  @c == 21
-        #puts "Previous" if @c + @f >= 11 && @c + @f < 21
-        #puts "Next" if @c > 0 && @c + @f < 11
         puts ""
         puts "Type [Exit] at any time to quit the search."
         puts ""
@@ -38,7 +33,7 @@ class FavoriteCocktails::CLI
         puts ""
         puts "Optional: Type [Next] to go to the next page, [Previous] to go to the previous page, or [All] to see all of the drinks."
         input = gets.strip
-        if input.to_i > 0 && input.to_i <= cocktails.length
+        if input.to_i > 0 && input.to_i <= 21
             cocktails_more_info(FavoriteCocktails::Cocktails.all[input.to_i - 1])
         elsif input.downcase == "all"
             @c = 0
@@ -48,16 +43,16 @@ class FavoriteCocktails::CLI
             @c -= 10 unless @c == 0 
             name_cocktails(cocktails)
         elsif input.downcase == "previous" && @c == 0 
+            name_cocktails(cocktails)
             puts ""
-            puts "You've seen all of the drinks!"
-            name_cocktails(cocktails)    
+            puts "You've seen all of the drinks!"  
         elsif input.downcase == "next"
                 @c += 10 unless @c + @f >= 21
             name_cocktails(cocktails)
         elsif input.downcase == "next" && @c+@f > 21
             puts ""
             puts "You've seen all of the drinks!"
-            name_cocktails(cocktails) 
+            name_cocktails(cocktails)
         elsif input.downcase == "exit"
             exit
         else
@@ -68,9 +63,7 @@ class FavoriteCocktails::CLI
         end
     end
     
-    def cocktails_more_info(cocktails)
-        #binding.pry
-        #information = FavoriteCocktails::Scraper.scrape_info(cocktail)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   .add_information(information)
+    def cocktails_more_info(cocktails)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               .add_information(information)
         puts ""
         puts "------------------------"
         puts "Learn more about #{cocktails.name}:"
@@ -131,7 +124,7 @@ class FavoriteCocktails::CLI
     end
 
 
-    def cocktails_specific_info(cocktails) #Presents more information to the user
+    def cocktails_specific_info(cocktails) 
         puts ""
         puts "------------------------"
         puts "Learn more about #{cocktails.name}"
