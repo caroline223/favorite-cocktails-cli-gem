@@ -89,7 +89,9 @@ class FavoriteCocktails::CLI
             puts "------------------------"
             puts ""
             puts "Did you know?"
-            puts "#{cocktails.image}"
+            puts ""
+            puts "Image : #{cocktails.image}"
+            puts ""
             puts "#{cocktails.description}"
             cocktails_specific_info(cocktails)
         when "2"
