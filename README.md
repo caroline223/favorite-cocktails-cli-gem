@@ -12,6 +12,8 @@ All content published by Favorite Cocktails is the property of Favorite Cocktail
 
 For better insight on how to use my app, see my video walkthrough! Enjoy!
 
+Video link: https://youtu.be/dFWTVSCMd8A 
+
 ## Installation
 
 Add this line to your application's Gemfile:
