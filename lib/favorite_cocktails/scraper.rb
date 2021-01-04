@@ -13,10 +13,10 @@ class FavoriteCocktails::Scraper
         cocktail.map do |d|
             page_url = nil  
             name = d.css("div.listicle-slide-hed").text.gsub(/[\n\t]/,"")
-                if image = d.css("img").attr("data-src")
-                    d.css("img").attr("data-src").value
-                else image = d.css("img").attr("src").value
-                end
+            if image = d.css("img").attr("data-src")
+                 d.css("img").attr("data-src").value
+            else image = d.css("img").attr("src").value
+            end
             description = d.css("div.listicle-slide-dek p:first-child").text.split(":").join(". ")
             ingredients = d.css("div.listicle-slide-dek p:nth-child(2)").text.strip 
             instructions = d.css("div.listicle-slide-dek p:nth-child(3) em").text

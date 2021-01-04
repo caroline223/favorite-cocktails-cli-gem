@@ -42,16 +42,8 @@ class FavoriteCocktails::CLI
         elsif input.downcase == "previous"
             @c -= 10 unless @c == 0 
             name_cocktails(cocktails)
-        elsif input.downcase == "previous" && @c == 0 
-            name_cocktails(cocktails)
-            puts ""
-            puts "You've seen all of the drinks!"  
         elsif input.downcase == "next"
                 @c += 10 unless @c + @f >= 21
-            name_cocktails(cocktails)
-        elsif input.downcase == "next" && @c+@f > 21
-            puts ""
-            puts "You've seen all of the drinks!"
             name_cocktails(cocktails)
         elsif input.downcase == "exit"
             exit
