@@ -149,7 +149,6 @@ class FavoriteCocktails::CLI
     
     end
 
-
     def exit 
         puts ""
         puts "Thanks for visiting this page!"
