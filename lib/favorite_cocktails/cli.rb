@@ -9,10 +9,10 @@ class FavoriteCocktails::CLI
         puts "   Famous Cocktails     "
         puts "  Care to take a sip??  "
         puts "------------------------"
-        cocktails = create_cocktails unless FavoriteCocktails::Cocktail.all.size > 0
+        cocktail = create_cocktails unless FavoriteCocktails::Cocktail.all.size > 0
         @c = 0
         @f = 9
-        name_cocktails(cocktails)
+        name_cocktails(cocktail)
     end
 
     def create_cocktails
@@ -23,7 +23,7 @@ class FavoriteCocktails::CLI
         FavoriteCocktails::Cocktail.all[@c..@c+@f].each.with_index(@c +1) {|c,i| puts "[#{i}] #{c.name}"}
     end
 
-    def name_cocktails(cocktails)
+    def name_cocktails(cocktail)
         display_cocktails
         puts ""
         puts ""
@@ -40,27 +40,27 @@ class FavoriteCocktails::CLI
         elsif input.downcase == "all"
             @c = 0
             @f = 21
-            name_cocktails(cocktails)
+            name_cocktails(cocktail)
         elsif input.downcase == "previous"
             @c -= 10 unless @c == 0 
-            name_cocktails(cocktails)
+            name_cocktails(cocktail)
         elsif input.downcase == "next"
                 @c += 10 unless @c + @f >= 21
-            name_cocktails(cocktails)
+            name_cocktails(cocktail)
         elsif input.downcase == "exit"
             exit
         else
             puts ""
             puts "Not quite. Please try again."
             puts ""
-            name_cocktails(cocktails)
+            name_cocktails(cocktail)
         end
     end
     
-    def cocktails_more_info(cocktails)
+    def cocktails_more_info(cocktail)
         puts ""
         puts "------------------------"
-        puts "Learn more about #{cocktails.name}:"
+        puts "Learn more about #{cocktail.name}:"
         puts "------------------------"
         puts ""
         puts "Please select a number corresponding to what you would like to learn more about."
@@ -77,35 +77,35 @@ class FavoriteCocktails::CLI
         case input.downcase
         when "1"
             subject = "Description"
-            info = cocktails.description
+            info = cocktail.description
             puts "------------------------"
-            puts "#{cocktails.name}'s Description"
+            puts "#{cocktail.name}'s Description"
             puts "------------------------"
             puts ""
             puts "Did you know?"
             puts ""
-            puts "Image : #{cocktails.image}"
+            puts "Image : #{cocktail.image}"
             puts ""
-            puts "#{cocktails.description}"
-            cocktails_specific_info(cocktails)
+            puts "#{cocktail.description}"
+            cocktails_specific_info(cocktail)
         when "2"
             subject = "Ingredients"
-            info = cocktails.ingredients 
+            info = cocktail.ingredients 
             puts "------------------------"
-            puts "#{cocktails.name}'s Ingredients"
+            puts "#{cocktail.name}'s Ingredients"
             puts "------------------------"
             puts ""
-            puts "#{cocktails.ingredients}"
-            cocktails_specific_info(cocktails)
+            puts "#{cocktail.ingredients}"
+            cocktails_specific_info(cocktail)
         when "3"
             subject = "Instructions"
-            info = cocktails.ingredients 
+            info = cocktail.ingredients 
             puts "------------------------"
-            puts "How to make a #{cocktails.name}"
+            puts "How to make a #{cocktail.name}"
             puts "------------------------"
             puts ""
-            puts "#{cocktails.instructions}"  
-            cocktails_specific_info(cocktails) 
+            puts "#{cocktail.instructions}"  
+            cocktails_specific_info(cocktail) 
         when "4" 
             start
         when "5" 
@@ -115,28 +115,28 @@ class FavoriteCocktails::CLI
        
         else
             puts "Whoa there! That's not a vaild input. Please try again."
-            cocktails_more_info(cocktails)
+            cocktails_more_info(cocktail)
         end
     end
 
 
-    def cocktails_specific_info(cocktails) 
+    def cocktails_specific_info(cocktail) 
         puts ""
         puts "------------------------"
-        puts "Learn more about #{cocktails.name}"
+        puts "Learn more about #{cocktail.name}"
         puts "------------------------"
         puts ""
         puts "Please select a number corresponding to what you would like to learn further."
         puts ""
         puts ""
 
-        puts "[1] Discover more about the #{cocktails.name}"
+        puts "[1] Discover more about the #{cocktail.name}"
         puts "[2] Uncover a different cocktail."
         puts "[3] Exit the program."
         input = gets.strip
         case input.downcase
         when "1"
-                cocktails_more_info(cocktails) 
+                cocktails_more_info(cocktail) 
         when "2"
                 start
         when "3" 
@@ -146,7 +146,7 @@ class FavoriteCocktails::CLI
     
         else
             puts "Whoa there! That's not a vaild input. Please try again."
-            cocktails_specific_info(cocktails)
+            cocktails_specific_info(cocktail)
         end
     
     end

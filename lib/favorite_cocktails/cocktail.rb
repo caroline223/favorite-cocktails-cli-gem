@@ -22,5 +22,4 @@ class FavoriteCocktails::Cocktail
     @@all
    end
 
-
 end
