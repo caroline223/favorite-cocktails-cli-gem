@@ -29,12 +29,14 @@ class FavoriteCocktails::CLI
         puts ""
         puts "Type [Exit] at any time to quit the search."
         puts ""
-        puts "Type in the cocktail number to learn more about the cocktail."
+        puts "Type in the cocktail name or number to learn more about the cocktail."
         puts ""
         puts "Optional: Type [Next] to go to the next page, [Previous] to go to the previous page, or [All] to see all of the drinks."
         input = gets.strip
         if input.to_i > 0 && input.to_i <= 21
             cocktails_more_info(FavoriteCocktails::Cocktail.all[input.to_i - 1])
+        elsif FavoriteCocktails::Cocktail.all.detect{|cocktail| cocktail.name.downcase == input.downcase}
+                cocktails_more_info(FavoriteCocktails::Cocktail.all.detect{|cocktail| cocktail.name.downcase == input.downcase})
         elsif input.downcase == "all"
             @c = 0
             @f = 21
