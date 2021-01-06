@@ -9,7 +9,7 @@ class FavoriteCocktails::CLI
         puts "   Famous Cocktails     "
         puts "  Care to take a sip??  "
         puts "------------------------"
-        cocktails = create_cocktails unless FavoriteCocktails::Cocktails.all.size > 0
+        cocktails = create_cocktails unless FavoriteCocktails::Cocktail.all.size > 0
         @c = 0
         @f = 9
         name_cocktails(cocktails)
@@ -20,7 +20,7 @@ class FavoriteCocktails::CLI
     end
 
     def display_cocktails
-        FavoriteCocktails::Cocktails.all[@c..@c+@f].each.with_index(@c +1) {|c,i| puts "[#{i}] #{c.name}"}
+        FavoriteCocktails::Cocktail.all[@c..@c+@f].each.with_index(@c +1) {|c,i| puts "[#{i}] #{c.name}"}
     end
 
     def name_cocktails(cocktails)
@@ -34,7 +34,7 @@ class FavoriteCocktails::CLI
         puts "Optional: Type [Next] to go to the next page, [Previous] to go to the previous page, or [All] to see all of the drinks."
         input = gets.strip
         if input.to_i > 0 && input.to_i <= 21
-            cocktails_more_info(FavoriteCocktails::Cocktails.all[input.to_i - 1])
+            cocktails_more_info(FavoriteCocktails::Cocktail.all[input.to_i - 1])
         elsif input.downcase == "all"
             @c = 0
             @f = 21

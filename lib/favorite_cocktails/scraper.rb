@@ -23,7 +23,7 @@ class FavoriteCocktails::Scraper
             if d.css("div.listicle-slide-dek p:nth-child(4) a").attr("href")
                 page_url = d.css("div.listicle-slide-dek p:nth-child(4) a").attr("href").value 
             end 
-            FavoriteCocktails::Cocktails.new(name, page_url, image, description, ingredients, instructions)
+            FavoriteCocktails::Cocktail.new(name, page_url, image, description, ingredients, instructions)
         end
     end
     

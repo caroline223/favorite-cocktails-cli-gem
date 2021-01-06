@@ -1,4 +1,4 @@
-class FavoriteCocktails::Cocktails
+class FavoriteCocktails::Cocktail
 
     attr_accessor :name, :ingredients, :instructions, :description, :page_url, :image
 
