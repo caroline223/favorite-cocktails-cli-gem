@@ -99,7 +99,7 @@ class FavoriteCocktails::CLI
             cocktails_specific_info(cocktail)
         when "3"
             subject = "Instructions"
-            info = cocktail.ingredients 
+            info = cocktail.instructions 
             puts "------------------------"
             puts "How to make a #{cocktail.name}"
             puts "------------------------"

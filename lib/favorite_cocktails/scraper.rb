@@ -18,7 +18,7 @@ class FavoriteCocktails::Scraper
             else image = d.css("img").attr("src").value
             end
             description = d.css("div.listicle-slide-dek p:first-child").text.split(":").join(". ")
-            ingredients = d.css("div.listicle-slide-dek p:nth-child(2)").text.strip 
+            ingredients = d.css("div.listicle-slide-dek p:nth-child(2)").text.strip
             instructions = d.css("div.listicle-slide-dek p:nth-child(3) em").text
             if d.css("div.listicle-slide-dek p:nth-child(4) a").attr("href")
                 page_url = d.css("div.listicle-slide-dek p:nth-child(4) a").attr("href").value 
