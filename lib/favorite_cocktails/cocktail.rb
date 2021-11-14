@@ -23,14 +23,9 @@ class FavoriteCocktails::Cocktail
    end
 
    def self.find_all_cocktails_by_ingredient(ingredient)
-        x = Cocktail.ingredients.to_a
-        all.select do |cocktail|
-            if x.include?(ingredient)
-                cocktail.name == ingredient 
-            else
-                return nil 
-            end
-        end
+       all.select do |cocktail|
+        cocktail.ingredients.include?(ingredient)
+       end
    end
    
 
